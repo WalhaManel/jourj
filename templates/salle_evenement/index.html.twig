@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<body>
+<br><br><br><br>
+   
+    <section id="new-arrivals" class="new-arrivals">
+        <div class="container">
+            <div class="section-header">
+<br><br><br><br>
+                <h2>Salle d'évenement</h2>
+            </div>
+            <!--/.section-header-->
+            <div class="new-arrivals-content">
+                <div class="row">
+{% for message in app.flashes('success')  %}
+                <div class="alert alert-success">
+                {{message}}
+                </div>
+            {% endfor %}
+{% for s in se %}
+<div class="col-md-3 col-sm-4">
+                        <div class="single-new-arrival">
+                            <div class="single-new-arrival-bg">
+                            <img src="assets/images/salles/{{s.img}}" >
+                            <h3>{{s.nom}}</h3>
+                            <h5>{{s.prix}}</h5>
+                            </div>
+                            </div>
+                            </div>
+{% endfor %}
+</div>
+            </div>
+        </div>
+        <!--/.container-->
+
+    </section>
+{% endblock body %}

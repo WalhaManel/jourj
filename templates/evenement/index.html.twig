@@ -1,0 +1,67 @@
+{% extends 'base.html.twig' %}
+
+
+
+{% block title %}Salles {% endblock %}
+{% block body %}
+<body>
+   
+    <section id="new-arrivals" class="new-arrivals">
+        <div class="container">
+            <div class="section-header">
+<br><br><br><br>
+                <h2>Les Salles d'évenement</h2>
+            </div>
+            <!--/.section-header-->
+            <div class="new-arrivals-content">
+            {% for message in app.flashes('success')  %}
+                <div class="alert alert-success">
+                {{message}}
+                </div>
+            {% endfor %}
+                <div class="row">
+                <form>
+                <div class="col-md-4">
+                 
+                </div>
+                <div class="col-md-4">
+                <div class="form-group">
+                 <label for="interval_prix">Intervalle des prix :</label>
+                 <table id="interval_prix">
+                 <tr>
+                 <td>
+                 <input class="form-control" type="text" name="key" placeholder="Min" ></td>&nbsp;
+                 <td><input  class="form-control" type="text" name="key" placeholder="Max" ></td>
+                 </tr></table>
+                 </div>
+                 </div>
+                 <div class="col-md-4">
+                 <div class="form-group">
+                <label for="select">Choisir la localisation :</label>
+                    <select class="form-control" name="pets" id="pet-select">
+                         <option value="">--Choisir une localisation :--</option>
+                         {% for s in SE %}
+                         <option value="">{{s.location}}</option>
+                         {% endfor %}
+                         </select>
+                         </div>
+                         </div>
+                 </form>
+                 </div><br><br><br>
+                                 <div class="row">
+
+
+
+                 
+
+{% for salle in SE %}
+<div class="col-md-6">
+                            <img src="{{ asset("assets/images/salles/" ~ salle.img) }}" >
+                            <h3>{{salle.nom}}</h3>
+                            <h5>{{salle.prix}}</h5>
+                            </div>{% endfor %}
+                            </div>
+            </div>
+
+    </section>
+{% endblock body %}
