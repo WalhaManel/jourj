@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Entity;
-
+use Symfony\Component\Validator\Constraints as Assert;
 use App\Entity\Evenement;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\SalleEvenementRepository;
@@ -20,21 +20,27 @@ class SalleEvenement
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Veuillez saisir le nom")
+     * @Assert\Length(min=5,minMessage="Minimum 5 caratcères")
      */
     private $nom;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Veuillez saisir la localisation")
      */
     private $location;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Veuillez saisir l'image'")
      */
     private $img;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Veuillez saisir le prix")
+     * @Assert\Length(min=2,minMessage="Minimum 2 caratcères")
      */
     private $prix;
 

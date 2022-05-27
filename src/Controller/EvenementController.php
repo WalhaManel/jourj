@@ -84,9 +84,15 @@ class EvenementController extends AbstractController
      * @Route("/delete_event/{id}", name="delete_event")
      */
     public function Delete(?Evenement $event,EntityManagerInterface $manage,Request $r): Response
-    {  
+    {       try{
             $manage->remove($event);
             $manage->flush();
+    }
+    catch(\Exception $e){
+        $this->addFlash('erreur',"Impossible de supprimée cette évenement !");
+        return $this->redirectToRoute("show_events");
+
+    }
             $this->addFlash('success',"l'évenement est supprimée avec succée");
             return $this->redirectToRoute("show_events");
 
