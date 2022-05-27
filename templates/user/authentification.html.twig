@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}S'inscrire{% endblock %}
+
+{% block body %}
+<br><br><br>
+<br><br><br>
+<section>
+<div class="container">
+<center>
+
+    {% if error %}
+    <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData,'security')}}</div>
+
+    {% endif %}
+        <form action="{{url("auth")}}" class="card card-item login-form" method="POST">
+            
+                    <div class="form-action-wrapper py-5">
+                        <div class="form-group">
+                            <h3 class="fs-22 pb-3 fw-bold">Se connecter</h3>
+                            <div class="divider"><span></span></div>
+                        </div>
+                        <div class="form-group">
+                            <label class="fs-14 text-black fw-medium lh-18">Nom d'utilisateur</label>
+                        <div class="input-group">
+                            <input type="text" name="_username" class="form-control form--control" placeholder="Votre nom d'utilisateur" value="{{ username }}">
+                        </div></div><!-- end form-group -->
+                        <div class="form-group">
+                            <label class="fs-14 text-black fw-medium lh-18">Mot de passe</label>
+                            <div class="input-group">
+                                <input class="form-control form--control password-field" type="password" name="_password" placeholder="Password">
+
+                            </div>
+                        </div><!-- end form-group -->
+                        <div class="form-group">
+                            <button id="send-message-btn" class="btn theme-btn w-100" type="submit">
+                                Se connecter
+                                <i class="la la-arrow-right icon ml-1"></i>
+                            </button>
+                        </div><!-- end form-group -->
+                    </div><!-- end form-action-wrapper -->
+            </div><!-- end row -->
+        </form>
+        <p class="text-black text-center fs-15">Vous n'avez pas un compte ? <a href="{{url('CreateUser')}}" class="text-color hover-underline">Inscription</a></p>
+   </center>
+ </div><!-- end container -->
+</section>
+{% endblock %}

@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Entity;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Symfony\Component\Validator\Constraints as Assert;
 use App\Entity\Evenement;
 use Doctrine\ORM\Mapping as ORM;
@@ -38,9 +40,8 @@ class SalleEvenement
     private $img;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="integer")
      * @Assert\NotBlank(message="Veuillez saisir le prix")
-     * @Assert\Length(min=2,minMessage="Minimum 2 caratcères")
      */
     private $prix;
 
@@ -48,6 +49,21 @@ class SalleEvenement
      * @ORM\ManyToOne(targetEntity=Evenement::class, inversedBy="salleEvenements")
      */
     private $event;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Reservation::class, mappedBy="salle_evenement")
+     */
+    private $reservations;
+
+    /**
+     * @ORM\Column(type="text")
+     */
+    private $description;
+
+    public function __construct()
+    {
+        $this->reservations = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -110,6 +126,48 @@ class SalleEvenement
     public function setEvent(?Evenement $event): self
     {
         $this->event = $event;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Reservation>
+     */
+    public function getReservations(): Collection
+    {
+        return $this->reservations;
+    }
+
+    public function addReservation(Reservation $reservation): self
+    {
+        if (!$this->reservations->contains($reservation)) {
+            $this->reservations[] = $reservation;
+            $reservation->setSalleEvenement($this);
+        }
+
+        return $this;
+    }
+
+    public function removeReservation(Reservation $reservation): self
+    {
+        if ($this->reservations->removeElement($reservation)) {
+            // set the owning side to null (unless already changed)
+            if ($reservation->getSalleEvenement() === $this) {
+                $reservation->setSalleEvenement(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(string $description): self
+    {
+        $this->description = $description;
 
         return $this;
     }

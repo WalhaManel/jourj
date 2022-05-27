@@ -22,6 +22,7 @@ class EvenementController extends AbstractController
             'SE' =>$SE
         ]);
     }
+    
     /**
      * @Route("/Voir_salles/{id}", name="Voir_salles")
      */

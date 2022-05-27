@@ -14,7 +14,13 @@ class AccueilController extends AbstractController
      * @Route("/", name="accueil")
      */
     public function index(EntityManagerInterface $manager): Response
-    {   $QR=$manager->getRepository(Evenement::class);
+    {   if( $this->getUser()!= null){
+        $role=$this->getUser()->getRoles();
+        if(in_array("ROLE_ADMIN",$role)){
+         return $this->redirect("show_events");
+         
+        }}
+        $QR=$manager->getRepository(Evenement::class);
         $e=$QR->findAll();
         return $this->render('accueil/index.html.twig', [
             'evenements'=> $e

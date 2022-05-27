@@ -1,0 +1,66 @@
+{% extends 'dashboard.html.twig' %}
+
+
+{% block body %}
+<body>
+<div class="container-xl">
+	<div class="table-responsive">
+		<div class="table-wrapper">
+			<div class="table-title">
+				<div class="row">
+                
+					<div class="col-sm-6">
+						<h2>Admin <b>Dashborad</b></h2>
+
+					</div>
+
+				</div>
+			</div>
+            {% for message in app.flashes('success')  %}
+                <div class="alert alert-success">
+                {{message}}
+                </div>
+            {% endfor %}
+            {% for message in app.flashes('erreur')  %}
+                <div class="alert alert-danger">
+                {{message}}
+                </div>
+            {% endfor %}
+			<table class="table table-striped table-hover">
+				<thead>
+					<tr>
+						
+                <th>Salle d'évenement</th>
+                <th>Date de réservation</th>
+                <th>Avance payée</th>
+                <th>Reste à payer</th>
+                <th>Date d'évenement</th>
+						
+					</tr>
+				</thead>
+				<tbody>
+{% for res in reservations %}
+					<tr>
+						
+						<td>{{res.SalleEvenement.nom}}</td>
+						<td>{{res.CreatedAt | date("m/d/Y  H:i:s") }}</td>
+                        <td> {{res.AvancePayee}}</td>
+					    <td> {{res.ResteAPayer}}</td>
+                        <td> {{res.DateEv}}</td>
+						
+						
+					</tr>
+{% endfor %}					
+				</tbody>
+			</table>
+			
+		</div>
+	</div>        
+</div>
+
+
+</body>
+
+
+
+{% endblock body %}

@@ -263,5 +263,14 @@ $(document).ready(function(){
 });
 </script>
 </head>
+<header>
+<br><br>
+<div class="container" >
+<div class="row">
+<a href="{{url('Reservations')}}" style="text-decoration:none;color:black;padding-left:10px;"><h5>Consulter la liste des reservations</h5></a>
+<a href="{{url('logout')}}" style="padding-left:1100px"><span class="fa fa-sign-out fa-3x"></span></a>
+</div>
+</div>
+</header>
 {% block body %}{% endblock %}
 </html>

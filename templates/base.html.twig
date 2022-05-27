@@ -4,6 +4,7 @@
 <html class="no-js" lang="en">
 
 <head>
+
     <!-- meta data -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -85,9 +86,19 @@
                                     <a href="#"><span class="lnr lnr-magnifier"></span></a>
                                 </li>
                                 <!--/.search-->
+                                {% if app.user %}
                                 <li class="nav-setting">
-                                    <a href="#"><span class="lnr lnr-cog"></span></a>
+                                    <a href="{{url('profileSettings',{"id":app.user.id})}}"><span class="lnr lnr-cog"></span></a>
                                 </li>
+                                <li class="nav-setting">
+                                    <a href="{{url('logout')}}"><span class="fa fa-sign-out"></span></a>
+                                </li>
+                                {% else %}
+                                <li class="nav-setting">
+                                    <a href="{{url('auth')}}">Se connecter</a>
+                                </li>
+                                {% endif %}
+                                
                                 <!--/.search-->
                                 
                                 <!--/.dropdown-->
@@ -110,10 +121,13 @@
                         <!-- Collect the nav links, forms, and other content for toggling -->
                         <div class="collapse navbar-collapse menu-ui-design" id="navbar-menu">
                             <ul class="nav navbar-nav navbar-center" data-in="fadeInDown" data-out="fadeOutUp">
-                                <li class=" scroll active"><a href="#home">home</a></li>
-                                <li class="scroll"><a href="#feature">réservations</a></li>
+                                <li ><a href="{{ url('accueil') }}">home</a></li>
                                 <li class="scroll"><a href="#blog">événements</a></li>
                                 <li class="scroll"><a href="#newsletter">contact</a></li>
+                                {% if app.user %}
+                                <li ><a href="{{url('MesReservations')}}">réservations</a></li>
+                                {% endif %}
+
                             </ul>
                             <!--/.nav -->
                         </div>

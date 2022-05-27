@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Reservation{% endblock %}
+
+{% block body %}
+<div class="container">
+<br><br><br><br><br><br>
+{% for message in app.flashes('erreur')  %}
+                <div class="alert alert-danger">
+                {{message}}
+                </div>
+            {% endfor %}
+
+
+{% endblock %}

@@ -20,7 +20,7 @@ final class Version20220526113838 extends AbstractMigration
     public function up(Schema $schema): void
     {
         // this up() migration is auto-generated, please modify it to your needs
-        $this->addSql('CREATE TABLE salle_evenement (id INT AUTO_INCREMENT NOT NULL, event_id INT DEFAULT NULL, nom VARCHAR(255) NOT NULL, location VARCHAR(255) NOT NULL, img VARCHAR(255) NOT NULL, prix VARCHAR(255) NOT NULL, INDEX IDX_EC82044E71F7E88B (event_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
+        $this->addSql('CREATE TABLE salle_evenement (id INT AUTO_INCREMENT NOT NULL, event_id INT DEFAULT NULL, nom VARCHAR(255) NOT NULL, location VARCHAR(255) NOT NULL, img VARCHAR(255) NOT NULL, prix INTEGER NOT NULL, INDEX IDX_EC82044E71F7E88B (event_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('ALTER TABLE salle_evenement ADD CONSTRAINT FK_EC82044E71F7E88B FOREIGN KEY (event_id) REFERENCES evenement (id)');
     }
 

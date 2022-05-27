@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Reservation{% endblock %}
+
+{% block body %}
+<div class="container">
+<br><br><br><br><br><br>
+{% for message in app.flashes('success')  %}
+                <div class="alert alert-success">
+                {{message}}
+                </div>
+            {% endfor %}
+                <center>
+                <table>
+                <tr>
+                <th>Salle d'évenement</th>
+                <th>Date de réservation</th>
+                <th>Avance payée</th>
+                <th>Reste à payer</th>
+                <th>Date d'évenement</th>
+                </tr>                
+{% for res in reservations %}
+<tr>
+
+   <td><a href="salle_ev"> {{res.SalleEvenement.nom}}</a></td>
+   <td> {{res.CreatedAt | date("m/d/Y  H:i:s") }}</td>
+   <td> {{res.AvancePayee}}</td>
+    <td> {{res.ResteAPayer}}</td>
+    <td> {{res.DateEv}}</td>
+</tr>
+{% endfor %}
+</table></center>
+<style>
+th{
+background-color: #f5f5f5;
+}
+td{ margin-top:0.5px;
+	padding-top:0.5px; 
+	padding-left:20px;
+	padding-right:20px;
+	padding-bottom:30px;
+}
+tr:hover {background-color: #f5f5f5;}
+table {
+    	margin-right:500px;
+    color:black;
+border: 1px solid gray;
+  border-collapse: collapse;	
+	width:1200px;
+}
+</style>
+{% endblock %}
