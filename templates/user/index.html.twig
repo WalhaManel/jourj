@@ -8,6 +8,15 @@
 <section >
 <center style="width=100px">
 {{ form_start(RegisterForm) }}
+  <div class="form-group">
+{{form_row(RegisterForm.email)}}
+</div>
+  <div class="form-group">
+{{form_row(RegisterForm.username)}}
+</div>
+  <div class="form-group">
+{{form_row(RegisterForm.password)}}
+</div>
 {{ form_end(RegisterForm) }}
 </section>
 </center>

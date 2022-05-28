@@ -63,4 +63,14 @@ class SalleEvenementRepository extends ServiceEntityRepository
 //            ->getOneOrNullResult()
 //        ;
 //    }
+
+
+public function getSalleByPrice($id,int $minp, int $maxp){
+    return $this->_em->createQuery("SELECT s FROM App\Entity\SalleEvenement s WHERE s.event = $id and s.prix >= $minp and s.prix <= $maxp ")
+                         ->getResult();
+}
+
+public function getSalleByPriceAloc($id,int $minp,int $maxp,$loc){
+    return $this->_em->createQuery("SELECT s FROM App\Entity\SalleEvenement s WHERE s.event = $id and s.prix >= $minp and s.prix <= $maxp and s.location = '". $loc ."' ")->getResult();
+}
 }

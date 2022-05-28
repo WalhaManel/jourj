@@ -4,6 +4,11 @@
 {% block body %}
 
 <body>
+{% for message in app.flashes('success')  %}
+                <div class="alert alert-success">
+                {{message}}
+                </div>
+            {% endfor %}
 <div id="header-carousel" class="carousel slide carousel-fade" data-ride="carousel">
             <!--/.carousel-indicator -->
             <ol class="carousel-indicators">
@@ -25,15 +30,11 @@
                                     <div class="col-sm-7">
                                         <div class="single-welcome-hero">
                                             <div class="welcome-hero-txt">
-                                                <h4>Organisation d'un évenement</h4>
-                                                <h2>Faites de votre événement un moment d’exception ! </h2>
-                                                <p>
-                                                    Une équipe de professionnels est à votre écoute pour vous aider à concevoir et organiser tout type d'évenement , et trouver le meilleur lieu pour votre évenement
-                                                </p>
+                                                <h4>Trouvez facilement</h4>
+                                                <h2> des lieux vérifiés et adaptés pour tous vos besoins événementiels. </h2>
+                                               
 
-                                                <button class="btn-cart welcome-add-cart welcome-more-info" onclick="window.location.href='#'">
-														more info
-													</button>
+                       
                                             </div>
                                             <!--/.welcome-hero-txt-->
                                         </div>
@@ -62,60 +63,7 @@
                 </div>
                 <!-- /.item .active-->
 
-                <div class="item">
-                    <div class="single-slide-item slide2">
-                        <div class="container">
-                            <div class="welcome-hero-content">
-                                <div class="row">
-                                    <div class="col-sm-7">
-                                        <div class="single-welcome-hero">
-                                            <div class="welcome-hero-txt">
-                                                <h4> Packet de mariage </h4>
-                                                <h2>Organisation de fêtes de mariages de A à Z</h2>
-                                                <p>
-                                                    Faites de votre mariage un moment d’exception
-                                                </p>
 
-                                                <div class="packages-price">
-                                                    <p>
-                                                        dt 1299.00
-                                                        <del>dt 1599.00</del>
-                                                    </p>
-                                                </div>
-
-                                                <button class="btn-cart welcome-add-cart" onclick="window.location.href='#'">
-														<span class="lnr lnr-plus-circle"></span>
-														add <span>to</span> cart
-													</button>
-                                                <button class="btn-cart welcome-add-cart welcome-more-info" onclick="window.location.href='#'">
-														more info
-													</button>
-                                            </div>
-                                            <!--/.welcome-hero-txt-->
-                                        </div>
-                                        <!--/.single-welcome-hero-->
-                                    </div>
-                                    <!--/.col-->
-                                    <div class="col-sm-5">
-                                        <div class="single-welcome-hero">
-                                            <div class="welcome-hero-img">
-                                                <img src="{{ asset('assets/images/slider/slider2.jpg') }}" alt="slider image">
-                                            </div>
-                                            <!--/.welcome-hero-txt-->
-                                        </div>
-                                        <!--/.single-welcome-hero-->
-                                    </div>
-                                    <!--/.col-->
-                                </div>
-                                <!--/.row-->
-                            </div>
-                            <!--/.welcome-hero-content-->
-                        </div>
-                        <!-- /.container-->
-                    </div>
-                    <!-- /.single-slide-item-->
-
-                </div>
                 <!-- /.item .active-->
 
                 <div class="item">
@@ -126,24 +74,11 @@
                                     <div class="col-sm-7">
                                         <div class="single-welcome-hero">
                                             <div class="welcome-hero-txt">
-                                                <h4>packet d'anniversaire</h4>
-                                                <h2>Bien organiser vos anniversaires</h2>
-                                                <p>
-                                                    Notre équipe vous met sur votre disposition une équipe de profesionnels avec une experience de plus de 10 ans pour organiser vos anniversaires.
-                                                </p>
-                                                <div class="packages-price">
-                                                    <p>
-                                                        dt 399.00
-                                                        <del>dt 599.00</del>
-                                                    </p>
-                                                </div>
-                                                <button class="btn-cart welcome-add-cart" onclick="window.location.href='#'">
-														<span class="lnr lnr-plus-circle"></span>
-														add <span>to</span> cart
-													</button>
-                                                <button class="btn-cart welcome-add-cart welcome-more-info" onclick="window.location.href='#'">
-														more info
-													</button>
+                                                <h4>Bénéficiez des meilleurs prix </h4>
+                                                <h2> notre service est gratuit avec les mêmes prix qu'en direct.</h2>
+                                                
+                                                
+                                                
                                             </div>
                                             <!--/.welcome-hero-txt-->
                                         </div>

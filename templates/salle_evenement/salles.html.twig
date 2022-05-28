@@ -30,6 +30,7 @@
 						<th>Image </th>
 						<th>Nom </th>
 						<th>Localisation</th>
+						<th>Description</th>
 						<th>Prix</th>
 						
 					</tr>
@@ -41,7 +42,8 @@
 						<td><img width="150" height="100" src="{{ asset('assets/images/salles/' ~ s.img )}}" alt="blog image"></td>
 						<td>{{s.nom}}</td>
 						<td >{{s.location}}</td>
-						<td >{{s.prix}}</td>
+						<td >{{s.description}}</td>
+						<td >{{s.prix}} TND</td>
 						
 						<td>
 							<a href="{{url("update_SE",{"id": s.id})}}" ><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>

@@ -19,7 +19,7 @@ class EvenementController extends AbstractController
     public function salle_event(?Evenement $event ,EntityManagerInterface $manager): Response
     {   $SE=$event->getSalleEvenements();
         return $this->render('evenement/index.html.twig', [
-            'SE' =>$SE
+            'SE' =>$SE,'id'=>$event->getId()
         ]);
     }
     

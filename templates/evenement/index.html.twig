@@ -25,7 +25,7 @@
                 </div>
             {% endfor %}
                 <div class="row">
-                <form>
+                <form name="f" action="{{url('filter',{'id':id})}}" method="POST">
                 <div class="col-md-4">
                  
                 </div>
@@ -35,43 +35,54 @@
                  <table id="interval_prix">
                  <tr>
                  <td>
-                 <input class="form-control" type="text" name="key" placeholder="Min" ></td>&nbsp;
-                 <td><input  class="form-control" type="text" name="key" placeholder="Max" ></td>
+                 <input class="form-control" type="text" name="minp" placeholder="Min" ></td>&nbsp;
+                 <td><input  class="form-control" type="text" name="maxp" placeholder="Max" ></td>
+                 <td><input  type="submit" value=""></td>
                  </tr></table>
                  </div>
                  </div>
                  <div class="col-md-4">
                  <div class="form-group">
                 <label for="select">Choisir la localisation :</label>
-                    <select class="form-control" name="pets" id="pet-select">
+                    <select onchange="submit();" class="form-control" name="loc" id="pet-select">
                          <option value="">--Choisir une localisation :--</option>
                          {% for s in SE %}
-                         <option value="">{{s.location}}</option>
+                         <option value="{{s.location}}">{{s.location}}</option>
                          {% endfor %}
                          </select>
                          </div>
                          </div>
                  </form>
                  </div><br><br><br>
-                                 <div class="row">
-
-
-
-                 
+                
+                                         <div class="container">
+<div class="row">
 
 {% for salle in SE %}
-<div class="col-md-6">
+
+
+
+
+
+
+<div class="col-md-4">
+                            <a href="{{url('show_details',{'id':salle.id})}}">
                             <img src="{{ asset("assets/images/salles/" ~ salle.img) }}" >
+                                                        <br>
+                            <centre>
                             <h3>{{salle.nom}}</h3>
-                            <h5>{{salle.prix}}</h5>
-                            <br><br><br><button  onclick="openForm()">Réserver ici</button>
+                            <h5>{{salle.prix}} TND</h5>
+                            </center>
+                            </a>
+                            <br><button class="btn btn-warning"  onclick="openForm()">Réserver ici</button>
                             <div class="form-popup" id="myForm">
                             <form action="{{ url('CreateRes',{"id":salle.id})}}" class="form-container" >
                             <div class="form-group">
                             <input type="date"  name="date">
-                                <button type="submit" class="btn">Réserver</button>
+                                <button type="submit" class="btn btn-primary">Réserver</button>
                             </div>
                             </form>
+                            </div>
                             </div>
                             {% endfor %}
                             </div>
@@ -142,4 +153,11 @@ function openForm() {
   opacity: 1;
 }
 </style>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> 
+<script type="text/javascript">
+     function soumettre()
+     {
+     document.forms['f'].submit();
+     }
+</script>
 {% endblock body %}

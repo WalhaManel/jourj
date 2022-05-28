@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Evenement;
 use App\Form\SalleEventType;
 use App\Entity\SalleEvenement;
+use App\Repository\SalleEvenementRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -33,6 +34,16 @@ class SalleEvenementController extends AbstractController
         return $this->render("salle_evenement/create.html.twig",['eventform'=>$eventform->createView()]);
 
     }
+
+    /**
+     * @Route("/show_details/{id}", name="show_details")
+     */
+    public function show_details(?SalleEvenement $salle): Response
+    { 
+        return $this->render("salle_evenement/salleDétails.html.twig",['s'=>$salle]);
+
+    }
+
     /**
      * @Route("/update_SE/{id}", name="update_SE")
      */
@@ -63,6 +74,50 @@ class SalleEvenementController extends AbstractController
             $manage->flush();
             $this->addFlash('success',"la salle d'évenement est supprimée avec succée");
             return $this->redirectToRoute("Voir_salles",["id"=>$id_ev]);
+
+    }
+    /**
+     * @Route("/filter/{id}", name="filter")
+     */
+    public function filter($id,SalleEvenementRepository $rep,Request $r): Response
+    {               $minp = $r->get("minp");
+                    $maxp = $r->get("maxp");
+                    $loc = $r->get("loc");
+                    if($minp != null && $maxp == null && $loc == null)
+                    {
+                        $result=$rep->getSalleByPrice($id,$minp,9999999999);
+
+                    }
+                    else if($maxp != null && $minp == null && $loc == null){
+                        $result= $rep->getSalleByPrice($id,0,$maxp);
+
+                    }
+                    else if($maxp != null && $minp != null && $loc == null){
+                        $result= $rep->getSalleByPrice($id,$minp,$maxp);
+
+                    }else if($maxp != null && $minp != null && $loc != null)
+                    {
+                        $result= $rep->getSalleByPriceAloc($id,$minp,$maxp,$loc);
+
+                    }else if($maxp == null && $minp == null && $loc != null)
+                    {
+                        $result= $rep->getSalleByPriceAloc($id,0,9999999999,$loc);
+                    }
+                    if(!isset($result) || empty($result) ) {
+                        $this->addFlash('erreur',"Aucune salle d'évenement correspond à votre choix");
+                        $result=$rep->findby(["event"=>$id]);
+                    }
+        return $this->render("evenement/index.html.twig",['id'=>$id,'SE'=>$result]);
+
+    }
+
+    /**
+     * @Route("/search", name="search")
+     */
+    public function search(SalleEvenementRepository $rep,Request $r): Response
+    {               $key = $r->get("key");
+                $salle=$rep->findOneByNom($key);
+        return $this->render("salle_evenement/salleDétails.html.twig",['s'=>$salle]);
 
     }
 }
