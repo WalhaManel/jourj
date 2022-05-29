@@ -14,7 +14,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class EvenementController extends AbstractController
 {
     /**
-     * Fonction qui affiche les salles correspondantes à une événement 
+     * Fonction qui affiche les salles correspondantes à un événement 
      * 
      * @Route("/salle_event/{id}", name="salle_event")
      */
@@ -27,7 +27,7 @@ class EvenementController extends AbstractController
     
 
     /**
-     * Fonction qui affiche les salles correspondantes à une événement dans l'espace de l'admin
+     * Fonction qui affiche les salles correspondantes à un événement dans l'espace de l'admin
      * 
      * @Route("/Voir_salles/{id}", name="Voir_salles")
      */
@@ -54,7 +54,7 @@ class EvenementController extends AbstractController
     }
 
     /**
-     * Création d'une événement 
+     * Création d'un événement 
      * 
      * @Route("/create_event", name="create_event")
      */
@@ -74,7 +74,7 @@ class EvenementController extends AbstractController
 
     }
     /**
-     * Modification d'une événement
+     * Modification d'un événement
      * 
      * @Route("/update_event/{id}", name="update_event")
      */
@@ -96,7 +96,7 @@ class EvenementController extends AbstractController
     }
 
     /**
-     * Suppression d'une événement
+     * Suppression d'un événement
      * 
      * @Route("/delete_event/{id}", name="delete_event")
      */
