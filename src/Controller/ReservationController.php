@@ -16,6 +16,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class ReservationController extends AbstractController
 {
     /**
+     * Création d'une réservation de salle d'événement
+     * 
      * @Route("/CreateRes/{id}", name="CreateRes")
      * @IsGranted("ROLE_USER")
      */
@@ -42,7 +44,10 @@ class ReservationController extends AbstractController
             }
         return $this->render('reservation/index.html.twig');
     }
+
     /**
+     * Affichage des réservations d'un client 
+     * 
      * @Route("/MesReservations", name="MesReservations")
      */
     public function MesReservations(EntityManagerInterface $manage): Response
@@ -51,7 +56,10 @@ class ReservationController extends AbstractController
         return $this->render('reservation/mesReservations.html.twig', 
         [ "reservations"=> $reservations] );
     }
+
     /**
+     * Affichage de toutes les réservations
+     * 
      * @Route("/Reservations", name="Reservations")
      */
     public function Reservations(EntityManagerInterface $manage): Response

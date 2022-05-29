@@ -1,6 +1,7 @@
 # Jour J
 
-Jour J est une plateforme web de Location de salle pour tout événement : mariage, réception, séminaire, réunion, conférence, fête ou anniversaire. 
+Jour J est une plateforme web de location de salle pour tout événement : mariage, réception, séminaire, réunion, conférence, fête ou anniversaire. 
+
 ## Fonctionnalités
 
 * Gestion d'évenement

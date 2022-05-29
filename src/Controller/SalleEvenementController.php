@@ -16,6 +16,8 @@ class SalleEvenementController extends AbstractController
 {
     
     /**
+     * Création d'une salle d'événement
+     * 
      * @Route("/create_SE/{id}", name="create_SE")
      */
     public function create(?Evenement $event,$id,EntityManagerInterface $manage,Request $r): Response
@@ -36,6 +38,8 @@ class SalleEvenementController extends AbstractController
     }
 
     /**
+     * Affichage des détails d'une salle d'événement
+     * 
      * @Route("/show_details/{id}", name="show_details")
      */
     public function show_details(?SalleEvenement $salle): Response
@@ -45,6 +49,8 @@ class SalleEvenementController extends AbstractController
     }
 
     /**
+     * Modification d'une salle d'événement
+     * 
      * @Route("/update_SE/{id}", name="update_SE")
      */
     public function Modifier(?SalleEvenement $SE,$id,EntityManagerInterface $manage,Request $r): Response
@@ -65,6 +71,8 @@ class SalleEvenementController extends AbstractController
     }
 
     /**
+     * Suppression d'une salle d'événement
+     * 
      * @Route("/delete_SE/{id}", name="delete_SE")
      */
     public function Delete(?SalleEvenement $SE,EntityManagerInterface $manage,Request $r): Response
@@ -76,7 +84,10 @@ class SalleEvenementController extends AbstractController
             return $this->redirectToRoute("Voir_salles",["id"=>$id_ev]);
 
     }
+
     /**
+     * Filtrage des résultats des salles d'événements
+     * 
      * @Route("/filter/{id}", name="filter")
      */
     public function filter($id,SalleEvenementRepository $rep,Request $r): Response
@@ -112,6 +123,8 @@ class SalleEvenementController extends AbstractController
     }
 
     /**
+     * Recherche avec le nom d'une salle d'événement
+     * 
      * @Route("/search", name="search")
      */
     public function search(SalleEvenementRepository $rep,Request $r): Response

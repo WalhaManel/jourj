@@ -9,8 +9,11 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class AccueilController extends AbstractController
-{
+{   
     /**
+     * Redirection vers l'accueil selon le role de l'utilisateur
+     * 
+     * 
      * @Route("/", name="accueil")
      */
     public function index(EntityManagerInterface $manager): Response

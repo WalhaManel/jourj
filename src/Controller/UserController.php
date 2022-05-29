@@ -18,6 +18,8 @@ use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 class UserController extends AbstractController
 {
     /**
+     * Modification des info du compte
+     * 
      * @Route("/profileSettings/{id}", name="profileSettings")
      */
     public function profileSettings(?User $user,Request $R,EntityManagerInterface $manage, UserPasswordHasherInterface $hasher){
@@ -37,6 +39,8 @@ class UserController extends AbstractController
     } 
 
     /**
+     * Inscription d'un client
+     * 
      * @Route("/CreateUser", name="CreateUser")
      */
     public function CreateUser(Request $R,EntityManagerInterface $manage, UserPasswordHasherInterface $hasher): Response
@@ -54,7 +58,10 @@ class UserController extends AbstractController
 
         return $this->render('user/index.html.twig', ['RegisterForm'=>$RF->createView()]);
     }
-   /**
+
+    /**
+     * Création d'un admin
+     * 
      * @Route("/CreateAdmin", name="CreateAdmin")
      */
     public function CreateAdmin(Request $R,EntityManagerInterface $manage, UserPasswordHasherInterface $hasher): Response
@@ -75,6 +82,8 @@ class UserController extends AbstractController
     }
 
     /**
+     * Authentification 
+     * 
      * @Route("/auth", name="auth")
      */
     public function login(AuthenticationUtils $AU ,EntityManagerInterface $manage){
@@ -88,6 +97,8 @@ class UserController extends AbstractController
     }
 
     /**
+     * Déconnection
+     * 
      * @Route("/logout", name="logout")
      */
     public function logout(AuthenticationUtils $AU){

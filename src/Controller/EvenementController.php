@@ -14,6 +14,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class EvenementController extends AbstractController
 {
     /**
+     * Fonction qui affiche les salles correspondantes à une événement 
+     * 
      * @Route("/salle_event/{id}", name="salle_event")
      */
     public function salle_event(?Evenement $event ,EntityManagerInterface $manager): Response
@@ -23,7 +25,10 @@ class EvenementController extends AbstractController
         ]);
     }
     
+
     /**
+     * Fonction qui affiche les salles correspondantes à une événement dans l'espace de l'admin
+     * 
      * @Route("/Voir_salles/{id}", name="Voir_salles")
      */
     public function Voir_salles(?Evenement $event ,EntityManagerInterface $manager): Response
@@ -32,8 +37,12 @@ class EvenementController extends AbstractController
         return $this->render('salle_evenement/salles.html.twig', [
             'SE' =>$SE ,'id'=>$id_ev
         ]);
+    
     }
+
     /**
+     * Fonction qui affiche les événements
+     * 
      * @Route("/show_events", name="show_events")
      */
     public function show_events(EntityManagerInterface $manager): Response
@@ -43,7 +52,10 @@ class EvenementController extends AbstractController
             'events' =>$e
         ]);
     }
+
     /**
+     * Création d'une événement 
+     * 
      * @Route("/create_event", name="create_event")
      */
     public function create(EntityManagerInterface $manage,Request $r): Response
@@ -62,6 +74,8 @@ class EvenementController extends AbstractController
 
     }
     /**
+     * Modification d'une événement
+     * 
      * @Route("/update_event/{id}", name="update_event")
      */
     public function Modifier(?Evenement $event,EntityManagerInterface $manage,Request $r): Response
@@ -82,6 +96,8 @@ class EvenementController extends AbstractController
     }
 
     /**
+     * Suppression d'une événement
+     * 
      * @Route("/delete_event/{id}", name="delete_event")
      */
     public function Delete(?Evenement $event,EntityManagerInterface $manage,Request $r): Response
